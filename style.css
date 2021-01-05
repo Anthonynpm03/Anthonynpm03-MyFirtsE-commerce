@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: smooth;
+  }
+
+.hide{
+    visibility: hidden;
+}
+.block{
+    display: none;
+}
+.botondesactivado{
+    color: black;
+    background-color: grey;
+}
+.botonactivado{
+    color: white;
+    background-color: #a00f0f;
+}
+.navBar{
+    width: 100%;
+    height: 180px;
+    background-color: #a00f0f;
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+}
+.navBar__logoyUsuario{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    height: 50%;
+}
+.navBar__logoyUsuario h1{
+    width: 40%;
+    padding: 5px 5px;
+    margin-top: 0;
+}
+.navBar__logoyUsuario ul{
+    list-style: none;
+    margin-top: 0%;
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+}
+#usuario{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+.navBar__logoyUsuario ul a{
+    color: white;
+    text-decoration: none;
+}
+.navBar__logoyUsuario ul span{
+    margin: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.navBar__logoyUsuario ul button{
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 10px;
+    background-color: #ffce37;
+    cursor: pointer;
+    border: 1 solid black;
+    box-shadow: 1px 2px 1px rgba(0,0,0,0.4);
+}
+.navBar__menu{
+    width: 60%;
+    margin: auto;
+}
+.navBar__menu ul{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+.banner{
+    width: 100%;
+    height: 70vh;
+    background-image: url(images/banner_grande.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.productos{
+    margin: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+.productos h2{
+    text-align: center;
+    font-size: 42px;
+    color: #a00f0f;
+}
+#listadoDeProductos{
+    background-color: #ebe9e9;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+ 
+}
+.cardProduct{
+    height: 400px;
+    width: 280px;
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.cardProduct__img{
+    width: 100%;
+    height: 180px;
+    padding: 4px;
+    border-bottom: 2px solid #EBEBEB;
+}
+.cardProduct__img img{
+    width: 100%;
+    height: 100%;
+}
+.cardProduct__info{
+    width: 100%;
+    height: 220px;
+}
+.cardProduct__infoVisible {
+    width: 90%;
+    height: 210px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cardProduc__infoVisible  h3{
+    color: #333;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+.cardProduc__infoVisible h4{
+    color: #333;
+}
+.cardProduc__infoVisible p{
+    color: #333;
+}
+.cardProduct__infoHide{
+    width: 100%;
+    height: 50px;
+    padding: 2px 5px;
+    text-align: center;
+    display: none;
+}
+.cardProduct__infoHide h3{
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+}
+.cardProduct__infoHide p{
+    color: #333;
+}
+.cardProduct:hover{
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+    transition: ease 0.3s all;
+    cursor: pointer;
+    height: 460px;
+}
+.cardProduct:hover .cardProduct__infoHide{
+    display: block;
+    transition: ease 1s all;
+}
+.modalProduct{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(235,235,235,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.modalProductCapa{
+    width: 90%;
+    height: 90%;
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.modalProduct__info{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.modalProduct__smallImg{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.modalProduct__smallImg img{
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    width: 100px;
+    height: 77px;
+}
+.modalProduct__bigImg{
+    width: 60%;
+    height: 100%;
+    padding: 0px 10px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modalProduct__bigImg i{
+    color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+.modalProduct__text{
+    width: 25%;
+    height: 100%;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.modalProduct__text h3{
+    color:  #a00f0f;
+    font-size: 22px;
+}
+.modalProduct__text span{
+    color: #333;
+    font-size: 28px;
+}
+.modalProduct__options{
+    width: 80%;
+    height: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.modalProduct__options button{
+    border: none;
+    padding: 10px 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.4);
+}
+.textarea{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.modalConfirmacion{
+    width: 50%;
+    height: 50vh;
+    background-color: rgba(235,235,235,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    
+}
+.cardConfirmacion{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+.carrito{
+    width: 100%;
+    text-align: center;
+}
+.carrito__tabla{
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.carrito__tabla thead{
+    background-color: #a00f0f;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.carrito__tabla thead tr{
+    height: 50px;
+}
+.modalEliminar{
+    width: 50%;
+    height: 50vh;
+    background-color: rgba(235,235,235,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+}
+.alinear {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#formRegistro{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#formRegistro label{
+    width: 100%;
+    font-size: 18px;
+    color: #a00f0f;
+    font-weight: bold;
+}
+
+#formRegistro input{
+    margin-bottom: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}
+
+#formRegistro span{
+    width: 50%;
+    margin-left: 100px;
+    padding: 10px 5px;
+    cursor: pointer;
+    text-align: center;
+}

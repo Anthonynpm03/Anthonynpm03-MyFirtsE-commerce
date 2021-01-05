@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!---Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Segunda Entrega</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="Json.js"></script>
+    <script defer src="objeto.js"></script>
+    <script defer src="administracion.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <div class="navBar">
+        <div class="navBar__logoyUsuario">
+            <h1>QUESERIA DE MI SIN TI</h1>
+            <ul>
+                <div id="usuario">
+                    <li>
+                    <details>
+                        <summary>
+                            Ingresar
+                        </summary>
+                            <input id="emailIngreso" type="email" placeholder="Example@gmail.com">
+                            <input id="passwordIngreso" type="password" placeholder="*********">
+                            <p onclick="Ingreso()">INGRESAR</p>
+                    </details>
+                    </li>
+                    <li><a href="#" onclick="abrirRegistro()">Registrarse</a></li>
+                </div>
+                <li><button onclick="cargarCarrito()"><i class="fas fa-shopping-cart"></i></button><span id="articulos">0</span> Articulos</li>
+            </ul>
+        </div>
+        <div class="navBar__menu">
+            <ul>
+                <li><a onclick="mostrarInicio()">Inicio</a></li>
+                <li>Nosotros</li>
+                <li>Menú</li>
+                <li>Contacto</li>
+            </ul>
+        </div>
+    </div>
+    <div id="banner" class="banner"></div>
+
+    <!---REGISTRO-->
+    <div id="registro" class="block">
+        <form action="" id="formRegistro">
+            <label for="name">Nombre</label>
+            <input type="text" id="name">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+            <p id="advertenciaEmail"></p>
+            <label for="clave">Clave</label>
+            <input type="password" name="password" id="password" required>
+            <p id="advertenciaPassword"></p>
+            <label for="confimacion">Confirmacion</label>
+            <input type="password" name="confirmacion" id="confirmacion" required>
+            <p id="advertenciaConfirmacion"></p>
+            <span class="botonactivado" id="botonRegistro" onclick="verificarRegistro()">Registrarme</span>
+            <p id="advertenciaForm"></p>
+        </form>
+    </div>
+
+    <!---DIV LISTADO DE PRODUCTOS-->
+    <div id="campoProductos" class="productos">
+        <h2>LISTADO DE PRODUCTOS</h2>
+        <div id="listadoDeProductos"> </div>
+        <div>
+            <h3>Por la compra de las de 3 articulos, tenes un descuento del 10% en el total de tu compra!</h3>
+        </div>
+    </div>
+
+    <!---MODAL VISUALIZACION DEL PRODUCTO-->
+    <div id="modalProduct" class="modalProduct hide">
+        <div class="modalProductCapa">
+            <span class="close" href="" onclick="ocultarModal()">X</span>
+            <div class="modalProduct__info">
+                <div class="modalProduct__smallImg" id="modalProduct__smallImg">
+                    
+                </div>
+                <div class="modalProduct__bigImg" id="modalProduct__bigImg">
+                </div>
+                <div class="modalProduct__text" id="modalProduct__text">
+                   
+                </div>
+            </div>
+            <div class="modalProduct__options">
+                    <div class="textarea">
+                        <label for="comentario">Comentario</label>
+                        <textarea name="comentario" id="comentario" cols="40" rows="5"></textarea>
+                    </div>
+                    <div class="selectCantidad">
+                        <label for="cantidad">Cantidad:</label>
+                        <select name="cantidad" id="cantidad">
+                            <option value="0"></option>
+                            <option value="1">1 unidad</option>
+                            <option value="2">2 unidades</option>
+                            <option value="3">3 unidades</option>
+                            <option value="4">4 unidades</option>
+                        </select>
+                        <h4>Sub-Total</h4>
+                        <span id="subTotal">0.00</span>
+                    </div>
+                    <div id="contenedorBotonCarrito">
+                        
+                    </div>  
+            </div>
+        </div>    
+    </div>
+
+    <!---MODAL NOTIFICACION-->
+
+    <div id="modalConfirmacion" class="modalConfirmacion hide">
+        <div class="cardConfirmacion">
+            <h3>NOTIFICACIÓN!</h3>
+            <p id="mensajeNotificacion"></p>
+            <div id="cardConfirmacion__botones" class="cardConfirmacion__botones">
+                
+            </div>
+        </div>
+    </div>
+    
+    <!---MODAL NOTIFICACION ELIMINAR PRODUCTO-->
+
+    <div id="modalEliminar" class="modalEliminar hide">
+        <div class="cardConfirmacion">
+            <h3>NOTIFICACIÓN!</h3>
+            <p>¿Deseas eliminar este producto de tu carrito?</p>
+            <label for="cantidad">Cantidad:</label>
+                        <select name="cantidad" id="cantidadEliminar">
+                            <option value="0"></option>
+                            <option value="1">1 unidad</option>
+                            <option value="2">2 unidades</option>
+                            <option value="3">3 unidades</option>
+                            <option value="4">4 unidades</option>
+                        </select>
+            <div class="modalEliminar__botones" id="modalEliminar__botones">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <br>
+    <br>
+    <br>
+
+
+
+    <div id="carrito" class="carrito block">
+        <table class="carrito__tabla">
+            <H2>CARRITO DE COMPRAR</H2>
+            <H3>LISTADO</H3>
+            <thead><tr><td>Item</td><td>Nombre</td><td>Cantidad</td><td>Precio</td><td>Subtotal</td><td>Comentario</td><td>Opciones</td></tr></thead>
+            <tbody id="contenidoCarrito">
+
+            </tbody>
+        </table>
+        <table class="carrito__tabla">
+            <tbody id="totalesCarrito">
+
+            </tbody>
+        </table>
+        <button onclick="VolveraListado()">Volver al listado de Productos</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+   
+        
+</body>
+</html>
